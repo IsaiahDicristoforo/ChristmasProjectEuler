@@ -38,6 +38,7 @@ namespace ChristmasProjectEuler
                         }
                 }
             }
+
             return largestPrime;
         }
 
