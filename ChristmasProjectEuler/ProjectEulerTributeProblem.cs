@@ -29,13 +29,15 @@ namespace ChristmasProjectEuler
                 for (int j = 0; j < lineOfInput.Length; j++)  //Loops through each digit in the string of numbers
                 {
                     bool containsAllPrimes = true;
-                        for (int k = 2 ; IsPrime(Convert.ToInt64(lineOfInput.Substring(j, 1))) && k < lineOfInput.Length && containsAllPrimes; k++)
-                        {
-                            long newNum = Convert.ToInt64(lineOfInput.ToString().Substring(j, k));
-                            if (IsPrime(newNum) && ContainsAllPrimeDigits(newNum))
-                                largestPrime = newNum > largestPrime ? newNum : largestPrime;
-                            if (!ContainsAllPrimeDigits(newNum)) containsAllPrimes = false;
+                    // This loop condition could be optimized a little: the expression IsPrime(Convert.ToInt64(lineOfInput.Substring(j, 1))) never changes
+                    for (int k = 2 ; IsPrime(Convert.ToInt64(lineOfInput.Substring(j, 1))) && k < lineOfInput.Length && containsAllPrimes; k++)
+                    {
+                        long newNum = Convert.ToInt64(lineOfInput.ToString().Substring(j, k));
+                        if (IsPrime(newNum) && ContainsAllPrimeDigits(newNum)) {
+                            largestPrime = newNum > largestPrime ? newNum : largestPrime;
                         }
+                        if (!ContainsAllPrimeDigits(newNum)) { containsAllPrimes = false; }
+                    }
                 }
             }
 
