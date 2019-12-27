@@ -25,7 +25,7 @@ namespace ChristmasProjectEuler
             if (File.Exists(testDataPath))
             {
                 Console.WriteLine($"File was successfully found at: {Path.GetFullPath(testDataPath)}.  Solving problem...");
-                Console.WriteLine(ProjectEulerTributeProblem.Solve(File.ReadAllLines(testDataPath)));
+                Console.WriteLine($"Solution: {ProjectEulerTributeProblem.Solve(File.ReadAllLines(testDataPath))}");
             }
             else
             {
